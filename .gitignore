@@ -1,0 +1,18 @@
+# misc
+.idea
+/tmp
+.env
+.DS_Store
+coverage.out
+coverage.html
+.mcp.json
+.claude/
+.agents/
+.augment/
+.junie/
+.superpowers/
+docs/superpowers/
+skills-lock.json
+
+# compiled binary
+/go-clean-arch

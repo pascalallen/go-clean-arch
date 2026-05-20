@@ -1,0 +1,43 @@
+services:
+  postgres:
+    env_file:
+      - .env
+    build:
+      context: internal/app/infrastructure/etc/postgres
+    container_name: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - dbdata:/var/lib/postgresql
+    networks:
+      - go-clean-arch
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  go:
+    env_file:
+      - .env
+    build:
+      context: .
+    container_name: go
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/src/app:rw
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - go-clean-arch
+
+networks:
+  go-clean-arch:
+    name: go-clean-arch
+
+volumes:
+  dbdata:
+    driver: local

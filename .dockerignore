@@ -1,0 +1,21 @@
+# Frontend
+web/app/node_modules/
+web/static/assets/
+
+# Go
+bin/
+tmp/
+vendor/
+coverage.out
+
+# Git
+.git/
+.gitignore
+
+# Environment
+.env
+.env.local
+.env.prod
+
+# OS
+.DS_Store
