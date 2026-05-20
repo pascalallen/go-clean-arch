@@ -1,6 +1,6 @@
 # go-clean-arch
 
-A reference implementation of Clean Architecture in Go. This repository is the companion project for the Medium article [*Structuring Go Projects With Clean Architecture*](https://pascalallen.medium.com).
+A reference implementation of Clean Architecture in Go. This repository is the companion project for the Medium article [*Structuring Go Projects With Clean Architecture*](https://medium.com/@pascalallen/structuring-go-projects-with-clean-architecture-2c46d7e58ac3).
 
 ## Project Structure
 
