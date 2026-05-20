@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# change to the project root
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$DIR"/.. || exit
+
+docker compose up -d postgres
+
+docker compose up -d adminer
+
+docker container run \
+    --rm -it \
+    -v "$(pwd)":/app \
+    -w /app \
+    -p 8080:8080 \
+    --name air \
+    --net go-clean-arch \
+    --env-file .env \
+    cosmtrek/air \
+    -build.exclude_dir "bin,docs,tmp" \
+    -build.cmd "go build -o ./tmp/main ./cmd/app" \
+    -build.bin "./tmp/main"
