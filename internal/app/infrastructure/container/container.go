@@ -8,6 +8,7 @@ import (
 	"github.com/pascalallen/go-clean-arch/internal/app/domain/role"
 	"github.com/pascalallen/go-clean-arch/internal/app/domain/user"
 	"github.com/pascalallen/go-clean-arch/internal/app/infrastructure/messaging"
+	"github.com/pascalallen/go-clean-arch/internal/app/infrastructure/websocket"
 )
 
 type Container struct {
@@ -19,6 +20,7 @@ type Container struct {
 	CommandBus           messaging.CommandBus
 	QueryBus             messaging.QueryBus
 	EventDispatcher      messaging.EventDispatcher
+	WebsocketHub         *websocket.Hub
 }
 
 func NewContainer(
@@ -30,6 +32,7 @@ func NewContainer(
 	commandBus messaging.CommandBus,
 	queryBus messaging.QueryBus,
 	eventDispatcher messaging.EventDispatcher,
+	websocketHub *websocket.Hub,
 ) Container {
 	return Container{
 		DatabaseSession:      dbSession,
@@ -40,5 +43,6 @@ func NewContainer(
 		CommandBus:           commandBus,
 		QueryBus:             queryBus,
 		EventDispatcher:      eventDispatcher,
+		WebsocketHub:         websocketHub,
 	}
 }

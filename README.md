@@ -8,7 +8,8 @@ A reference implementation of Clean Architecture in Go. This repository is the c
 ├── bin/       # Helper scripts for common Docker commands
 ├── cmd/       # Go main packages (entry points)
 ├── docs/      # Documentation
-└── internal/  # All application code
+├── internal/  # All application code
+└── web/       # Frontend assets
 ```
 
 ## Architecture
@@ -56,7 +57,8 @@ internal/app/infrastructure/
 ├── messaging/    # Command bus, event dispatcher, query bus
 ├── repository/   # Postgres implementations
 ├── routes/       # Gin HTTP router
-└── service/      # JWT token service
+├── service/      # JWT token service
+└── websocket/    # WebSocket hub for real-time push updates
 ```
 
 ## Prerequisites

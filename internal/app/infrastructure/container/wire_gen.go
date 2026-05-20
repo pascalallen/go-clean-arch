@@ -11,6 +11,7 @@ import (
 	"github.com/pascalallen/go-clean-arch/internal/app/infrastructure/logger/slog"
 	"github.com/pascalallen/go-clean-arch/internal/app/infrastructure/messaging"
 	"github.com/pascalallen/go-clean-arch/internal/app/infrastructure/repository"
+	"github.com/pascalallen/go-clean-arch/internal/app/infrastructure/websocket"
 )
 
 // Injectors from wire.go:
@@ -24,6 +25,7 @@ func InitializeContainer() Container {
 	commandBus := messaging.NewChannelCommandBus(logger)
 	queryBus := messaging.NewSynchronousQueryBus(logger)
 	eventDispatcher := messaging.NewChannelEventDispatcher(logger)
-	container := NewContainer(db, logger, permissionRepository, roleRepository, userRepository, commandBus, queryBus, eventDispatcher)
+	hub := websocket.NewHub()
+	container := NewContainer(db, logger, permissionRepository, roleRepository, userRepository, commandBus, queryBus, eventDispatcher, hub)
 	return container
 }

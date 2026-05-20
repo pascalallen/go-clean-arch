@@ -9,6 +9,7 @@ import (
 	"github.com/pascalallen/go-clean-arch/internal/app/infrastructure/logger/slog"
 	"github.com/pascalallen/go-clean-arch/internal/app/infrastructure/messaging"
 	"github.com/pascalallen/go-clean-arch/internal/app/infrastructure/repository"
+	"github.com/pascalallen/go-clean-arch/internal/app/infrastructure/websocket"
 )
 
 func InitializeContainer() Container {
@@ -22,6 +23,7 @@ func InitializeContainer() Container {
 		messaging.NewChannelCommandBus,
 		messaging.NewSynchronousQueryBus,
 		messaging.NewChannelEventDispatcher,
+		websocket.NewHub,
 	)
 	return Container{}
 }

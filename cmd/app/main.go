@@ -46,6 +46,7 @@ func runConsumers(c container.Container) {
 
 	go c.CommandBus.StartConsuming()
 	go c.EventDispatcher.StartConsuming()
+	go c.WebsocketHub.Run()
 }
 
 func setupCommandHandlers(commandBus messaging.CommandBus, c container.Container) {
