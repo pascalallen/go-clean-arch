@@ -5,10 +5,10 @@ A reference implementation of Clean Architecture in Go. This repository is the c
 ## Project Structure
 
 ```
+├── bin/       # Helper scripts for common Docker commands
 ├── cmd/       # Go main packages (entry points)
 ├── docs/      # Documentation
-├── internal/  # All application code
-└── web/       # Frontend assets
+└── internal/  # All application code
 ```
 
 ## Architecture
@@ -81,7 +81,7 @@ cp .env.example .env
 ### Bring up the environment
 
 ```bash
-docker compose up --build
+bin/up
 ```
 
 The app will be running at [http://localhost:8080](http://localhost:8080).
@@ -89,13 +89,13 @@ The app will be running at [http://localhost:8080](http://localhost:8080).
 ### Seed the database
 
 ```bash
-docker compose exec go go run cmd/seed/seed.go
+bin/exec go run cmd/seed/seed.go
 ```
 
 ### Take down the environment
 
 ```bash
-docker compose down
+bin/down
 ```
 
 ## Testing
